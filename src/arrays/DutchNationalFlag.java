@@ -7,15 +7,16 @@ import java.util.Scanner;
 
 public class DutchNationalFlag extends ArrayPrinter{
 
+	public DutchNationalFlag() throws FileNotFoundException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public static void main(String[] args) throws FileNotFoundException {
-		
-		Scanner sc = new Scanner(new FileInputStream(new File("input.txt")));
-		
-		int[] arr = new int[sc.nextInt()];
-		
-		for(int i=0;i<arr.length;i++)
-			arr[i] = sc.nextInt();
-			
+		new DutchNationalFlag().start();
+	}
+
+	public void start(){
 		sc.close();
 		
 		int lo = 0,mid = 0,hi=arr.length-1 ;		
@@ -37,9 +38,8 @@ public class DutchNationalFlag extends ArrayPrinter{
 		}
 		
 		printArray(arr);
-		
 	}
-
+	
 	public static void swap(int[] arr,int a,int b){
 		
 		int temp = arr[a];
