@@ -3,7 +3,6 @@ package arrays;
 import java.io.FileNotFoundException;
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.LinkedList;
 
 public class MaxSubarrayK extends ArrayPrinter{
 
