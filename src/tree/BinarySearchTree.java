@@ -29,6 +29,9 @@ public class BinarySearchTree {
 		t.inorder(t.root);
 		
 		System.out.println(t.search(t.root,50));
+		
+		t.deleteNode(t.root, 50);
+		t.inorder(t.root);
 	}
 	
 	public Node search(Node node,int key){
@@ -48,6 +51,40 @@ public class BinarySearchTree {
 		inorder(root.getLeft());
 		System.out.println(root.getData());
 		inorder(root.getRight());
+	}
+	
+	public Node deleteNode(Node root,int key){
+		
+		if(root == null)
+			return root;
+		if(root.getData() < key)
+			root.setRight(deleteNode(root.getRight(),key));
+		else if(root.getData() > key)
+			root.setLeft(deleteNode(root.getLeft(),key));
+		else{
+			
+			if(root.getLeft()==null)
+				return root.getRight();
+			else if(root.getRight() == null)
+				return root.getLeft();
+			
+			root.setData(minValue(root.getRight()));
+			root.setRight(deleteNode(root.getRight(),root.getData()));
+		}
+		
+		return root;
+	}
+
+	private int minValue(Node node) {
+		
+		int min = node.getData();
+		
+		while(node.getLeft() != null){
+			min = node.getLeft().getData();
+			node = node.getLeft();
+		}
+		
+		return min;
 	}
 
 	public Node insert(Node node,int val){
