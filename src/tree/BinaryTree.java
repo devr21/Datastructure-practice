@@ -31,6 +31,23 @@ public class BinaryTree {
 		t.inorder(t.root);
 		System.out.println("postorder"); 
 		t.postorder(t.root);
+		
+		System.out.println("diameter "+t.diameter(t.root));
+		
+	}
+	
+	public int diameter(Node root){
+		
+		if(root == null)
+			return 0;
+		int lh = height(root.getLeft());
+		int rh = height(root.getRight());
+		
+		int ld = diameter(root.getLeft());
+		int rd = diameter(root.getRight());
+		
+		return Math.max(lh+rh+1,Math.max(ld,rd));
+		
 	}
 	
 	public void postorder(Node root){
